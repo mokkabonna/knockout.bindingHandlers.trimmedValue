@@ -13,11 +13,11 @@ define(['knockout', 'jquery', 'js/trimmedValue'], function(ko, $, trimmedValue) 
 	});
 
 	//attach it to knockout for the remainder of the test
-	ko.bindingHandlers.trimmedValue = trimmedValue;
 
 	module('Binding', {
 		fixture: '<input id="input1" data-bind="trimmedValue : value" />',
 		setup: function() {
+			ko.bindingHandlers.trimmedValue = trimmedValue;
 			model = {
 				value: ko.observable()
 			};
