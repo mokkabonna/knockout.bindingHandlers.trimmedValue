@@ -4,7 +4,7 @@ define(['knockout', 'jquery', 'js/trimmedValue'], function(ko, $, trimmedValue) 
 	module('General');
 
 	test('does not attach itself to knockout automatically', function() {
-		ok(!ko.bindingHandlers.number);
+		ok(!ko.bindingHandlers.trimmedValue);
 	});
 
 	test('returns update and init functions', function() {
