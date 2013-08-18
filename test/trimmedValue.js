@@ -25,9 +25,6 @@ define(['knockout', 'jquery', 'js/trimmedValue'], function(ko, $, trimmedValue) 
 			input = $('#input1');
 
 			ko.applyBindings(model);
-		},
-		teardown: function() {
-
 		}
 	});
 
