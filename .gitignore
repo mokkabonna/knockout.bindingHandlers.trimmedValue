@@ -1,0 +1,5 @@
+/components
+/node_modules
+.tern-port
+/app/vendor
+/.grunt
