@@ -13,11 +13,14 @@
 	require(['knockout', 'js/trimmedValue'], function(ko, trimmedValue) {
 		ko.bindingHandlers.trimmedValue = trimmedValue;
 		var viewModel = {
-			value: ko.observable('foo ')
+			value: ko.observable(' untrimmed original value '),
+			value1: ko.observable('trimmed value')
 		};
 
 		viewModel.json = ko.computed(function() {
-			return JSON.stringify(viewModel.value(), null, 2);
+			var json = ko.toJS(viewModel);
+			delete json.json;
+			return JSON.stringify(json, null, 2);
 		});
 
 		ko.applyBindings(viewModel);

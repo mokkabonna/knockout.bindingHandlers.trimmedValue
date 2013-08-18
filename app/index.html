@@ -37,18 +37,20 @@
 			<div class="span6">
 				<h2>Form elements</h2>
 				<form class="form-horizontal">
-						<label class="control-group">
-							<input class="span12" type="text" data-bind="trimmedValue: value" />
+						<label>
+							<span>Untrimmed value as original value</span>
+							<input type="text" data-bind="trimmedValue: value"/>
 						</label>
-						<label class="control-group">
-							<textarea class="span12" data-bind="trimmedValue: value" ></textarea>
+						<label>
+							<span>Trimmed value as original value</span>
+							<input type="text" data-bind="trimmedValue: value1"/>
 						</label>
 				</form>
 			</div>
 			<div class="span6">
 				<h2>Real time view model</h2>
 				<p>
-					Please note that the undefined values will not show up in the json below
+					Please note that the undefined values will not show up in the JSON below
 				</p>
 				<pre data-bind="text: json"></pre>
 			</div>
