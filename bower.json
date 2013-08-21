@@ -1,6 +1,6 @@
 {
   "name": "knockout.bindingHandlers.trimmedValue",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "main": "app/js/trimmedValue.js",
   "ignore": [
     "test",
