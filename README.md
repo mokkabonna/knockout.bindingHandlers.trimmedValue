@@ -22,6 +22,7 @@ requirejs.config({
     config: {
         'bower_components/knockout.bindingHandlers.trimmedvalue/src/trimmedvalue': {
             name: 'someOtherName'
+        }
     }
 });
 ```
