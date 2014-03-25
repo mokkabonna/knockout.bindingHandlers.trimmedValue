@@ -1,39 +1,30 @@
 # Trimmed value binding for knockout
 
-[![Build status](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedValue.png)](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedValue)
+[![Build status](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedvalue.png)](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedvalue)
 
 ## Usage
 
+HTML
 
-```html
-<input type="text" data-bind="trimmedValue : myObservable" >
+    <input data-bind="trimmedvalue: myobs" >
+
+JS
+
+    ko.applyBindings({
+        myobs : ko.observable()
+    });
+
+
+This binding is written in AMD. It returns the binding object. It will attach itself to `knockout.bindingHandlers.trimmedvalue` once required for the first time. This can be overridden with a config section in your requirejs config like shown below.
+
 ```
-
-
-```js
-ko.applyBindings({
-	myObservable : ko.observable()
+requirejs.config({
+    config: {
+        'bower_components/knockout.bindingHandlers.trimmedvalue/src/trimmedvalue': {
+            name: 'someOtherName'
+    }
 });
 ```
-
-This binding is written in AMD. Just require it to init it. It will return the binding object and you will have to attach it to the desired knockout binding name yourself. This is to prevent conflict with another bindings. You can for instance do this in a custom knockout module that combines knockout and your custom bindings.
-
-```js
-define('knockout', ['bindings/trimmedValue', 'bindings/otherbinding',  'libs/knockout'], function(trimmedValue, otherbinding, ko){
-	ko.bindingHandlers.trimmedValue = trimmedValue;
-	ko.bindingHandlers.otherbinding = otherbinding;
-	return ko;
-});
-```
-
-Now you can use your customized knockout in your project.
-
-```js
-define(['knockout'], function(ko){
-	//use your custom knockout
-});
-```
-
 
 ## Behaviour
 
@@ -53,9 +44,8 @@ For accurate versions check bower.json
 
 Clone, then run (assuming you have node)
 
-    npm install
-    grunt bower //this is to install all bower packages
+    npm install & bower install
 
-You can now use grunt to run tests, lint etc.
+You can now use grunt develop for a ready made watch task for development. Tests, linting..
 
-    grunt
+    grunt develop

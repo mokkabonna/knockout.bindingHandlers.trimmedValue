@@ -1,79 +1,57 @@
+/*jshint node:true, es3:false*/
 (function() {
-	'use strict';
-	module.exports = function(grunt) {
-		// Project configuration.
-		grunt.initConfig({
-			pkg: grunt.file.readJSON('package.json'),
-			jshint: {
-				all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
-			},
-			watch: {
-				scripts: {
-					files: ['**/*.js', 'test/**', 'app/**'],
-					tasks: ['karma:server:run', 'jshint']
-				}
-			},
-			bower: {
-				options: {
-					cleanBowerDir : false,
-					targetDir: 'app/vendor',
-					layout: function(type, component) {
-						return component; //want any resources, js or css or any in the vendor subfolder
-					}
-				},
-				install: {}
-			},
-			"gh-pages": {
-				options: {
-					base: 'app'
-				},
-				src: ['**']
-			},
-			karma: {
-				server: {
-					configFile: 'karma.conf.js',
-					background: true,
-					runnerPort: 9999,
-					port: 9998, //specific port for phantomjs only
-					browsers: ['PhantomJS']
-				},
-				once: {
-					configFile: 'karma.conf.js',
-					runnerPort: 9888,
-					singleRun: true,
-					port: 9887, //specific port for phantomjs only
-					browsers: ['PhantomJS']
-				},
-				standard: {
-					configFile: 'karma.conf.js',
-					background: false,
-					browsers : ['PhantomJS']
-				}
-			},
-			connect: {
-				server: {
-					options: {
-						keepalive: true,
-						port: 9001,
-						base: 'app'
-					}
-				}
-			},
-			clean: ["components", "app/vendor", "node_modules"]
-		});
+  'use strict';
+  module.exports = function(grunt) {
+    require('load-grunt-tasks')(grunt); // Load grunt tasks automatically
+    // Project configuration.
+    grunt.initConfig({
+      pkg: grunt.file.readJSON('package.json'),
+      jshint: {
+        all: ['Gruntfile.js', 'src/**/*.js', 'spec/**/*.js']
+      },
+      watch: {
+        options: {
+          spawn: false
+        },
+        //watches all scripts an rerun hinting and the tests immediately
+        scripts: {
+          files: ['<%= jshint.all %>'],
+          tasks: ['jshint', 'karma:server:run']
+        }
+      },
+      bower: {
+        tests: {
+          rjsConfig: 'spec/test-main.js',
+          options: {
+            baseUrl: './'
+          }
+        }
+      },
+      bowerVerify: {
+        test: {
+          tasks: ['bower', 'karma:once']
+        }
+      },
+      karma: {
+        options: {
+          configFile: 'karma.conf.js'
+        },
+        //for a single run of test
+        once: {
+          singleRun: true,
+        },
+        //for use while developing and in combination with watch task
+        server: {
+          background: true,
+        },
+      }
+    });
 
-		grunt.loadNpmTasks('grunt-contrib-jshint');
-		grunt.loadNpmTasks('grunt-contrib-watch');
-		grunt.loadNpmTasks('grunt-contrib-connect');
-		grunt.loadNpmTasks('grunt-contrib-clean');
-		grunt.loadNpmTasks('grunt-bower-task');
-		grunt.loadNpmTasks('grunt-bower-task');
-		grunt.loadNpmTasks('grunt-gh-pages');
-		grunt.loadNpmTasks('grunt-karma');
+    //For development
+    grunt.registerTask('develop', ['jshint', 'karma:server', 'watch:scripts']);
 
-		// Default task(s).
-		grunt.registerTask('test', ['jshint', 'karma:standard']);
-		grunt.registerTask('develop', ['jshint', 'karma:server', 'watch:scripts']);
-		grunt.registerTask('default', ['bower:install', 'jshint', 'karma:once']);
-	};
+    //For testing
+    grunt.registerTask('test', ['jshint', 'karma:once']);
+    grunt.registerTask('test:full', ['jshint', 'bowerVerify']);
+  };
 })();
