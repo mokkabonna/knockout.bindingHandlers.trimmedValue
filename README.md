@@ -1,6 +1,6 @@
 # Trimmed value binding for knockout
 
-[![Build status](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedvalue.png)](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedValue)
+[![Build status](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedValue.png)](https://travis-ci.org/mokkabonna/knockout.bindingHandlers.trimmedValue)
 
 ## Usage
 
