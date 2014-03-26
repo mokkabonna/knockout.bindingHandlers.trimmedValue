@@ -1,6 +1,6 @@
 {
-  "name": "knockout.bindingHandlers.trimmedvalue",
-  "main": "src/trimmedvalue.js",
+  "name": "knockout.bindingHandlers.trimmedValue",
+  "main": "src/trimmedValue.js",
   "version": "0.2.1",
   "ignore": [
     "node_modules",
@@ -22,6 +22,6 @@
     "binding",
     "bindingHandlers",
     "amd",
-    "trimmedvalue"
+    "trimmedValue"
   ]
 }

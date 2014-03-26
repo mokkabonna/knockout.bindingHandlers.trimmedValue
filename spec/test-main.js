@@ -7,4 +7,4 @@ require.config({
   }
 });
 
-require(['spec/trimmedvalue'], window.__karma__.start);
+require(['spec/trimmedValue'], window.__karma__.start);

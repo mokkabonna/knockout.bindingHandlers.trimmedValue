@@ -1,4 +1,4 @@
-define(['knockout', 'jquery', 'src/trimmedvalue'], function(ko, $, trimmedvalue) {
+define(['knockout', 'jquery', 'src/trimmedValue'], function(ko, $) {
 
   describe('Trimmedvalue', function() {
     var viewModel;
@@ -7,7 +7,7 @@ define(['knockout', 'jquery', 'src/trimmedvalue'], function(ko, $, trimmedvalue)
 
     before(function() {
       root = document.createElement('div');
-      root.innerHTML = '<input id="input" data-bind="trimmedvalue:obs">';
+      root.innerHTML = '<input id="input" data-bind="trimmedValue:obs">';
       document.body.appendChild(root);
       element = $('#input');
     });

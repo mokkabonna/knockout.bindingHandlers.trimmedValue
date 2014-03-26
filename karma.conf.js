@@ -13,7 +13,7 @@ module.exports = function(config) {
       pattern: 'src/**.js',
       included: false
     }, {
-      pattern: 'spec/trimmedvalue.js',
+      pattern: 'spec/trimmedValue.js',
       included: false
     }, 'spec/test-main.js'],
 

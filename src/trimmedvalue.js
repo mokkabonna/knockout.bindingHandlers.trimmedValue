@@ -2,7 +2,7 @@
 define(['knockout', 'jquery', 'module'], function(ko, $, module) {
   'use strict';
 
-  var bindingName = module.config().name || 'trimmedvalue';
+  var bindingName = module.config().name || 'trimmedValue';
 
   return ko.bindingHandlers[bindingName] = {
     init: function(element, valueAccessor) {
